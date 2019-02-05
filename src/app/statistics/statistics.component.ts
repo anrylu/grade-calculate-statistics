@@ -34,7 +34,7 @@ import { StatisticsService } from './statistics.service';
 export class StatisticsComponent implements OnInit {
   statistics: object
   constructor(statisticsService: StatisticsService) { 
-    this.statistics = statisticsService.getStatistics();
+    statisticsService.getStatistics().subscribe(statistics => this.statistics = statistics)
   }
   getGradeNo() {
     return Object.keys(this.statistics).length;

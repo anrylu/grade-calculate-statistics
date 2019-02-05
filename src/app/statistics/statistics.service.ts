@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -41,9 +42,9 @@ export class StatisticsService {
     this.wrongGrade = -3;
     this.totalQuestionNumber = 20;
     this.resultMap = {};
-  }
-  getStatistics() { 
     this.calculate();
-    return this.resultMap;
+  }
+  getStatistics(): Observable<object> {
+    return of(this.resultMap);
   }
 }
