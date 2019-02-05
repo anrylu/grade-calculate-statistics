@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class StatisticsService {
+  totalQuestionNumber: number
   noAnswerGrade: number
   correctGrade: number
   wrongGrade: number
-  totalQuestionNumber: number
   resultMap: object
   calculate() {
     var i = 0, j = 0, k = 0, grade = 0;

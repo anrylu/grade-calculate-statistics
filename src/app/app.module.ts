@@ -11,6 +11,7 @@ import { PageNotFoundComponent }   from './page-not-found/page-not-found.compone
 import { AppRoutingModule }        from './app-routing.module';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { PlotComponent } from './plot/plot.component';
+import { ConfigUiComponent } from './config-ui/config-ui.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { PlotComponent } from './plot/plot.component';
     AppComponent,
     PageNotFoundComponent,
     StatisticsComponent,
-    PlotComponent
+    PlotComponent,
+    ConfigUiComponent
   ],
   bootstrap: [ AppComponent ]
 })
