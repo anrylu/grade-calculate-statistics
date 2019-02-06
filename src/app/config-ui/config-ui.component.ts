@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StatisticsService } from '../statistics/statistics.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-config-ui',
@@ -18,7 +19,7 @@ import { StatisticsService } from '../statistics/statistics.service';
 })
 export class ConfigUiComponent implements OnInit {
   statisticsService: StatisticsService
-  constructor(statisticsService: StatisticsService) {
+  constructor(statisticsService: StatisticsService, private router: Router, private activatedroute: ActivatedRoute) {
     this.statisticsService = statisticsService;
   }
 
@@ -26,8 +27,18 @@ export class ConfigUiComponent implements OnInit {
   }
 
   apply() {
-    console.log(this.statisticsService.totalQuestionNumber);
-    this.statisticsService.calculate();
+    this.router.navigate(
+      ['./statistics'],
+      {
+        queryParams: {
+          totalQuestionNumber: this.statisticsService.totalQuestionNumber,
+          noAnswerGrade: this.statisticsService.noAnswerGrade,
+          correctGrade: this.statisticsService.correctGrade,
+          wrongGrade: this.statisticsService.wrongGrade
+        },
+        relativeTo: this.activatedroute
+      }
+    );
   }
 }
 

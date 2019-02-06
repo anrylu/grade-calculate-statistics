@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -36,13 +37,19 @@ export class StatisticsService {
       }
     }
   }
-  constructor() {
-    this.noAnswerGrade = 0;
-    this.correctGrade = 5;
-    this.wrongGrade = -3;
-    this.totalQuestionNumber = 20;
+  constructor(private route: ActivatedRoute) {
     this.resultMap = {};
-    this.calculate();
+    this.route.queryParams.subscribe(params => {
+      this.noAnswerGrade = params['noAnswerGrade'];
+      if( this.noAnswerGrade == undefined ) this.noAnswerGrade = 0;
+      this.correctGrade = params['correctGrade'];
+      if( this.correctGrade  == undefined ) this.correctGrade = 5;
+      this.wrongGrade = params['wrongGrade'];
+      if( this.wrongGrade == undefined ) this.wrongGrade = -3;
+      this.totalQuestionNumber = params['totalQuestionNumber'];
+      if( this.totalQuestionNumber == undefined ) this.totalQuestionNumber = 20;
+      this.calculate();
+    });
   }
   getStatistics(): Observable<object> {
     return of(this.resultMap);
