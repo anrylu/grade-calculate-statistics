@@ -3,8 +3,8 @@
 </div>
 <app-config-ui></app-config-ui>
 <nav>
-  <a routerLink="/statistics" routerLinkActive="active">Statistics</a>
-  <a routerLink="/plot" routerLinkActive="active">Plot</a>
+  <a routerLink="/statistics" routerLinkActive="active" [queryParams]="getQueryParameters()">Statistics</a>
+  <a routerLink="/plot" routerLinkActive="active" [queryParams]="getQueryParameters()">Plot</a>
 </nav>
 <div [@routeAnimation]="getAnimationData(routerOutlet)">
   <router-outlet #routerOutlet="outlet"></router-outlet>

@@ -12,7 +12,7 @@ export class PlotComponent implements OnInit {
   chart: Chart
 
   constructor(statisticsService: StatisticsService) {
-    statisticsService.getStatistics().subscribe(statistics => this.statistics = statistics)
+    this.statistics = statisticsService.getStatistics();
   }
 
   ngOnInit() {

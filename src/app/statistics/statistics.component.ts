@@ -29,12 +29,11 @@ import { StatisticsService } from './statistics.service';
     </tbody>
   </table>
 `
-//'./statistics.component.html',
 })
 export class StatisticsComponent implements OnInit {
   statistics: object
   constructor(statisticsService: StatisticsService) { 
-    statisticsService.getStatistics().subscribe(statistics => this.statistics = statistics)
+    this.statistics = statisticsService.getStatistics();
   }
   getGradeNo() {
     return Object.keys(this.statistics).length;

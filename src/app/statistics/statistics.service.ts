@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
@@ -12,6 +11,9 @@ export class StatisticsService {
   wrongGrade: number
   resultMap: object
   calculate() {
+    // reset
+    this.resultMap = {};
+  
     var i = 0, j = 0, k = 0, grade = 0;
     // loop no answer
     for( i=0; i<=this.totalQuestionNumber; i++ ) {
@@ -51,7 +53,7 @@ export class StatisticsService {
       this.calculate();
     });
   }
-  getStatistics(): Observable<object> {
-    return of(this.resultMap);
+  getStatistics() {
+    return this.resultMap;
   }
 }

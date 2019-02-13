@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StatisticsService } from '../statistics/statistics.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-config-ui',
@@ -19,7 +20,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ConfigUiComponent implements OnInit {
   statisticsService: StatisticsService
-  constructor(statisticsService: StatisticsService, private router: Router, private activatedroute: ActivatedRoute) {
+  constructor(statisticsService: StatisticsService, private router: Router, private activatedroute: ActivatedRoute, private location: Location) {
     this.statisticsService = statisticsService;
   }
 
@@ -39,6 +40,7 @@ export class ConfigUiComponent implements OnInit {
         relativeTo: this.activatedroute
       }
     );
+    location.reload();
   }
 }
 
